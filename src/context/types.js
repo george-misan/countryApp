@@ -1,0 +1,5 @@
+export const GET_COUNTRY = 'GET_COUNTRY';
+export const GET_COUNTRIES = 'GET_COUNTRIES';
+export const CLEAR_COUNTRIES = 'CLEAR_COUNTRIES';
+export const SEARCH_COUNTRIES = 'SEARCH_COUNTRIES';
+export const SET_LOADING = 'SET_LOADING';
