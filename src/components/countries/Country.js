@@ -1,27 +1,30 @@
-import React, { Fragment, useEffect, useContext } from 'react';
+import React, { Fragment, useEffect, useContext, Component } from 'react';
+import Spinner from '../layout/Spinner';
 import CountryContext from '../../context/country/countryContext';
 
 const Country = ({ match }) => {
   const countryContext = useContext(CountryContext);
-  const { country, getCountry } = countryContext;
+  const { country, getCountry, loading } = countryContext;
 
   useEffect(() => {
     getCountry(match.params.name);
   }, []);
 
-  const { name, capital, population, area } = country;
+  if (loading) {
+    console.log('before loading', country);
+    return <Spinner />;
+  } else if (!loading) {
+    console.log('after loading', country);
+    for (let elements of country) {
+      const { name, population, region, capital } = elements;
 
-  console.log('capital', capital);
-  return (
-    <Fragment>
-      <h1>{name}</h1>
-      <ul>
-        <li>{capital}</li>
-        <li>{population}</li>
-        <li>{area}</li>
-      </ul>
-    </Fragment>
-  );
+      return (
+        <Fragment>
+          <h1>{name}</h1>
+        </Fragment>
+      );
+    }
+  }
 };
 
 export default Country;
