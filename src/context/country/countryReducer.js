@@ -8,6 +8,12 @@ import {
 
 export default (state, action) => {
   switch (action.type) {
+    case SEARCH_COUNTRIES:
+      return {
+        ...state,
+        countries: action.payload,
+        loading: false
+      };
     case GET_COUNTRIES:
       return {
         ...state,

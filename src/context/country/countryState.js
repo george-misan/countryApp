@@ -19,6 +19,17 @@ const CountryState = props => {
 
   const [state, dispatch] = useReducer(CountryReducer, initialState);
 
+  const searchCountry = async name => {
+    const res = await axios.get(
+      `https://restcountries.eu/rest/v2/name/${name}`
+    );
+
+    dispatch({
+      type: SEARCH_COUNTRIES,
+      payload: res.data
+    });
+  };
+
   // Get Country
   const getCountries = async () => {
     setLoading();
@@ -49,6 +60,7 @@ const CountryState = props => {
         countries: state.countries,
         country: state.country,
         loading: state.loading,
+        searchCountry,
         getCountries,
         getCountry
       }}

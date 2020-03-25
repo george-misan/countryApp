@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Spinner from '../layout/Spinner';
+import Search from '../../components/countries/Search';
 import CountryContext from '../../context/country/countryContext';
 import { useContext } from 'react';
 
@@ -18,20 +19,25 @@ const Countries = () => {
     return <Spinner />;
   } else {
     return (
-      <table>
-        <caption>List of countries in the world</caption>
-        <thead>
-          <tr>
-            <th>AlphaCode</th>
-            <th>Name</th>
-            <th>Capital</th>
-            <th>population</th>
-          </tr>
-        </thead>
-        {countries.map(country => (
-          <CountryItem key={country.name} country={country} />
-        ))}
-      </table>
+      <Fragment>
+        <Search />
+        <table>
+          <caption>List of countries in the world</caption>
+          <thead>
+            <tr>
+              <th>Flag</th>
+              <th>AlphaCode</th>
+              <th>Name</th>
+              <th>Capital</th>
+              <th>Languages</th>
+              <th>population</th>
+            </tr>
+          </thead>
+          {countries.map(country => (
+            <CountryItem key={country.name} country={country} />
+          ))}
+        </table>
+      </Fragment>
     );
   }
 };
