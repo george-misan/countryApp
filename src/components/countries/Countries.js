@@ -72,6 +72,7 @@ const Countries = () => {
               <th>Region</th>
               <th>Language</th>
               <th>Population</th>
+              <th>Action</th>
             </tr>
           </thead>
           {countries.map(country => (

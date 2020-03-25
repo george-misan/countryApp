@@ -23,6 +23,9 @@ const CountryItem = ({
           ))}
         </td>
         <td>{population}</td>
+        <td>
+          <input type="submit" value="Add" className="btn btn-light" />
+        </td>
       </tr>
     </tbody>
   );
